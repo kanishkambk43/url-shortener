@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>URL Shortener</title>
+
+   <link rel="stylesheet" href="/frontend/style.css">
+   
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>URL Shortener</h1>
+
+        <p class="subtitle">
+            Turn long URLs into short, shareable links.
+        </p>
+
+        <form id="shortenForm">
+
+            <!-- Long URL -->
+            <label for="longUrl">Long URL</label>
+
+            <input
+                type="url"
+                id="longUrl"
+                placeholder="https://example.com/very/long/url"
+                required
+            >
+
+
+            <!-- Custom Code -->
+            <label for="customCode">Custom Code (optional)</label>
+
+            <input
+                type="text"
+                id="customCode"
+                placeholder="my-link"
+                minlength="3"
+                maxlength="20"
+            >
+
+
+            <!-- Expiration Date -->
+            <label for="expiresDate">
+                Expiration Date (optional)
+            </label>
+
+            <input
+                type="date"
+                id="expiresDate"
+            >
+
+
+            <!-- Expiration Time -->
+            <label for="expiresTime">
+                Expiration Time (optional)
+            </label>
+
+            <input
+                type="time"
+                id="expiresTime"
+            >
+
+
+            <!-- Submit Button -->
+            <button type="submit">
+                Shorten URL
+            </button>
+
+        </form>
+
+
+        <!-- Result -->
+        <div id="result" class="result"></div>
+
+    </div>
+
+
+   <script src="/frontend/script.js"></script>
+
+</body>
+</html>
