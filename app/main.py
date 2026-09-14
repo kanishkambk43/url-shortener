@@ -140,7 +140,7 @@ async def shorten_url(
     return {
         "long_url": str(request.long_url),
         "short_code": short_code,
-        "short_url": f"{BASE_URL}/{short_code}"
+        "short_url" : f"{request.base_url}{short_code}"
     }
 
 @app.get("/stats/{short_code}")
