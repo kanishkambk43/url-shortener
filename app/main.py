@@ -71,11 +71,8 @@ async def shorten_url(
     db: AsyncSession = Depends(get_db)
 ):
     # Rate limiting - 5 requests per minute
-    client_ip = client_request.client.host
-    rate_limit_key = f"rate_limit:{client_ip}"
-
+    rate_limit_key = "rate_limit:global"
     request_count = await redis_client.incr(rate_limit_key)
-    print("RATE LIMIT COUNT:", request_count)
 
     if request_count == 1:
         await redis_client.expire(rate_limit_key, 60)
