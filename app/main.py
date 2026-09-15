@@ -75,6 +75,7 @@ async def shorten_url(
     rate_limit_key = f"rate_limit:{client_ip}"
 
     request_count = await redis_client.incr(rate_limit_key)
+    print("RATE LIMIT COUNT:", request_count)
 
     if request_count == 1:
         await redis_client.expire(rate_limit_key, 60)
