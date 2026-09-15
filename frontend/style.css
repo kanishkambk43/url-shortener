@@ -8,18 +8,17 @@ body {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
     min-height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 30px 0;
 }
+
+/* Main URL Shortener */
 
 .container {
     background: white;
     width: 90%;
     max-width: 500px;
+    margin: 0 auto;
     padding: 35px;
-
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -48,10 +47,8 @@ label {
 input {
     padding: 12px;
     margin-bottom: 20px;
-
     border: 1px solid #ccc;
     border-radius: 6px;
-
     font-size: 14px;
 }
 
@@ -62,13 +59,10 @@ input:focus {
 
 button {
     padding: 12px;
-
     border: none;
     border-radius: 6px;
-
     background: #222;
     color: white;
-
     font-size: 16px;
     cursor: pointer;
 }
@@ -77,15 +71,16 @@ button:hover {
     background: #444;
 }
 
+/* Short URL Result */
+
 .result {
     margin-top: 25px;
     padding: 15px;
-
     border-radius: 6px;
     background: #f1f1f1;
-
     word-break: break-word;
 }
+
 .short-url-container {
     display: flex;
     align-items: center;
@@ -102,6 +97,7 @@ button:hover {
     padding: 8px 14px;
     font-size: 14px;
 }
+
 .stats-button {
     margin-top: 15px;
     width: 100%;
@@ -116,4 +112,81 @@ button:hover {
 
 #statsResult p {
     margin-bottom: 6px;
+}
+
+/* Existing URL Stats */
+
+.existing-stats {
+    width: 90%;
+    max-width: 500px;
+    margin: 30px auto 0;
+    padding: 30px 35px;
+
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.existing-stats h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+#statsForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#statsForm label {
+    margin-bottom: 6px;
+}
+
+#statsCode {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+#statsCode:focus {
+    outline: none;
+    border-color: #333;
+}
+
+#statsForm button {
+    width: 100%;
+}
+
+#existingStatsResult {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
+    background: #f1f1f1;
+    word-break: break-word;
+}
+
+#existingStatsResult p {
+    margin-bottom: 8px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .container,
+    .existing-stats {
+        width: calc(100% - 30px);
+        padding: 25px 20px;
+    }
+
+    .short-url-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .short-url-container button {
+        width: 100%;
+    }
 }

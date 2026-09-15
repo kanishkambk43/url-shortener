@@ -157,3 +157,65 @@ form.addEventListener("submit", async function (event) {
         console.error(error);
     }
 });
+const statsForm = document.getElementById("statsForm");
+const existingStatsResult =
+    document.getElementById("existingStatsResult");
+
+statsForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const shortCode =
+        document.getElementById("statsCode").value.trim();
+
+    existingStatsResult.textContent = "Loading...";
+
+    try {
+        const response = await fetch(
+            `/stats/${shortCode}`
+        );
+
+        const statsData = await response.json();
+
+        if (!response.ok) {
+            existingStatsResult.textContent =
+                statsData.detail ||
+                "Unable to fetch statistics.";
+            return;
+        }
+
+        existingStatsResult.innerHTML = `
+            <p>
+                <strong>Short Code:</strong>
+                ${statsData.short_code}
+            </p>
+
+            <p>
+                <strong>Long URL:</strong>
+                ${statsData.long_url}
+            </p>
+
+            <p>
+                <strong>Clicks:</strong>
+                ${statsData.click_count}
+            </p>
+
+            <p>
+                <strong>Created:</strong>
+                ${statsData.created_at}
+            </p>
+
+            <p>
+                <strong>Expires:</strong>
+                ${
+                    statsData.expires_at ||
+                    "Never"
+                }
+            </p>
+        `;
+    } catch (error) {
+        existingStatsResult.textContent =
+            "Unable to connect to the server.";
+
+        console.error(error);
+    }
+});
